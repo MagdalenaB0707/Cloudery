@@ -1,80 +1,88 @@
-# Digital Products Online Store - Cloudery
+# Cloudery — Digital Products Online Store
 
-Ovo je aplikacija za online prodaju digitalnih proizvoda. Korisnici mogu pregledati proizvode, kupovati ih i preuzimati sadržaje, dok administratori imaju mogućnost upravljanja kategorijama, proizvodima i narudžbinama.
+Cloudery is a full-stack web application for buying and downloading digital products. Users can browse, purchase, and access digital content, while administrators manage the product catalog, categories, and orders.
 
-## Sadržaj repozitorijuma
-Projekat se sastoji iz dva dela:
-- `backend` – Laravel RESTful API
-- `frontend` – ReactJS aplikacija
+Built solo from scratch using Laravel (REST API backend) and ReactJS (frontend).
 
-## Pokretanje projekta lokalno
+## Features
 
-### Kloniranje repozitorijuma
+### Users
+- Register and log in with secure token-based authentication (Laravel Sanctum)
+- Browse products by category with search, filtering, and sorting
+- Preview partial content before purchase (watermarked images, partial documents)
+- Purchase products instantly or via cart
+- Access and download full content after purchase
+- View order history and purchased products in profile
+- Live currency conversion — RSD, EUR, USD (ExchangeRate API)
+- Password reset flow
 
-git clone https://github.com/elab-development/internet-tehnologije-2024-projekat-digitalproductsonlinestore_2021_0179.git
-cd internet-tehnologije-2024-projekat-digitalproductsonlinestore_2021_0179
+### Administrators
+- Manage products and categories (create, edit, delete)
+- View all user orders
+- Sales analytics dashboard with charts by category (Recharts)
+- Dedicated admin interface
 
-# Backend - Laravel
+## Tech Stack
 
+**Frontend:** ReactJS, Axios, Bootstrap, Recharts  
+**Backend:** Laravel 10, Laravel Sanctum, PHP  
+**Database:** MySQL — 6-table relational schema with joins, transactions, and triggers  
+**External APIs:** ExchangeRate API (live currency conversion)
+
+## Project Structure
+
+```
+Cloudery/
+├── backend/    # Laravel RESTful API
+└── frontend/   # ReactJS application
+```
+
+## Getting Started
+
+### Prerequisites
+- PHP 8.x, Composer
+- Node.js, npm
+- MySQL
+
+### Backend Setup
+
+```bash
 cd backend
-
-## Instalacija paketa
 composer install
-
-## Kopiranje .env fajla i podešavanje
 cp .env.example .env
-
-## Generisanje ključa
 php artisan key:generate
+```
 
-## Podesiti konekciju ka MySQL bazi u .env fajlu
+Configure your MySQL connection in `.env`:
+
+```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=digitalproducts_db
 DB_USERNAME=root
 DB_PASSWORD=
+```
 
-# Migracije i seedovanje 
+Run migrations and seed the database:
+
+```bash
 php artisan migrate --seed
-
-# Pokretanje servera
 php artisan serve
+```
 
-# Frontend
+### Frontend Setup
 
+```bash
 cd frontend
-
-## Instalacija paketa
 npm install
-
-## Pokretanje aplikacije
 npm start
+```
 
-# Funkcionalnosti
-## Korisnici
-1. Registracija i prijava korisnika
-2. Pregled proizvoda po kategorijama
-3. Kupovina proizvoda i pristup kupljenom sadržaju
-4. Prikaz detalja proizvoda i mogućnost preuzimanja nakon kupovine
-5. Pretraga, filtriranje, sortiranje i konverzija cena (RSD, EUR, USD)
-6. Reset lozinke
+## Test Credentials
 
-## Administratori
-1. Upravljanje proizvodima i kategorijama
-2. Pregled narudžbina korisnika
-3. Statistika kupovina po kategorijama (grafikon)
-4. Različiti interfejs za admin korisnika (admin@gmail.com)
+**Admin account:**  
+Email: `admin@gmail.com`  
+Password: `admin123`
 
-Test korisnički nalog
-Admin nalog:
-Email: admin@gmail.com
-Lozinka: admin123
-Korisnički nalog (samostalno kreiranje)
-
-# Tehnologije
-Frontend: ReactJS, Axios, Bootstrap, Recharts
-Backend: Laravel 10, Sanctum, MySQL
-Baza podataka: relacije, transakcije, trigeri
-API integracije: ExchangeRate API, šale API
-
+**User account:** Register a new account manually.
